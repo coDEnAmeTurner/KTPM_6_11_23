@@ -54,12 +54,12 @@ namespace Cau6
         public HocVien(string hoTen, string queQua, Diem diem)
         {
             this.MaSo = dem++;
-            this.HoTen = hoTen;
-            this.QueQua = queQua;
             if (diem.TOAN >= 0 && diem.TOAN <= 10 && diem.VAN >= 0
                 && diem.VAN <= 10 && diem.ANH >= 0 && diem.ANH <= 10 && hoTen != ""
                 && hoTen != null && queQua != null && queQua != "")
             {
+                this.HoTen = hoTen;
+                this.QueQua = queQua;
                 this.Diem = diem;
             }
             else

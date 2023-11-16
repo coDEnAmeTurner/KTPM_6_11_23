@@ -49,6 +49,7 @@ namespace Cau6Tester
         [DataRow(0, 10, -5)]
         [DataRow(0, 9, 15)]
         [ExpectedException(typeof(InvalidDataException))]
+        //kiểm thử các test case false
         public void TestTinhDiemTrungBinhFalse(double toan, double anh, double van)
         {
             HocVien hv = new HocVien("Tuan", "BD", new Diem(toan, van, anh));
@@ -56,6 +57,7 @@ namespace Cau6Tester
         }
 
         [TestMethod]
+        //kiểm thử các test case true
         public void TestDiemTrungBinhAllTrue()
         {
             HocVien hv = new HocVien("Tran Luu Quoc Tuan", "Binh Duong", new Diem(10, 8, 9));
@@ -63,16 +65,26 @@ namespace Cau6Tester
         }
 
         //kiem thu QLHocVien Constructor
-
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        //kiểm thử test case danh sach là null
         public void TestQLHocVienConstructorNull()
         {
             List<HocVien> ds = null;
             QLHocVien quanly = new QLHocVien(ds);
         }
 
+        //kiểm thử test case danh sach không phần tử 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestQLHocVienConstructorKoPhanTu()
+        {
+            List<HocVien> ds = new List<HocVien>() { };
+            QLHocVien quanly = new QLHocVien(ds);
+        }
+
+        [TestMethod]
+        //kiểm thử test case danh sách ko null, có phần tử
         public void TestQLHocVienConstructorNotNull()
         {
             List<HocVien> actual = new List<HocVien>() { 
@@ -82,8 +94,9 @@ namespace Cau6Tester
             Assert.AreEqual(new Diem(1, 2, 3), actual[0].Diem);
         }
 
-        //kiem thu timDStimDSHocVienCoHocBong()
+        //kiem thu timDSHocVienCoHocBong()
         [TestMethod]
+        //kiểm thử test case danh sach là null
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestTimDSHocVienCoHocBongNull()
         {
@@ -92,6 +105,17 @@ namespace Cau6Tester
             var dshocbong = quanly.timDSHocVienCoHocBong();
         }
 
+        //kiểm thử test case danh sach không phần tử 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestTimDSHocVienCoHocBongKoPhanTu()
+        {
+            List<HocVien> ds = new List<HocVien>() { };
+            QLHocVien quanly = new QLHocVien(ds);
+            var dshocbong = quanly.timDSHocVienCoHocBong();
+        }
+
+        //kiểm thử test case danh sach có phần tử 
         [TestMethod]
         public void TestTimDSHocVienCoHocBongNotNull()
         {

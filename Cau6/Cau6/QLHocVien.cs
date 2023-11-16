@@ -12,16 +12,23 @@ namespace Cau6
 
         public QLHocVien(List<HocVien> dsHocVien)
         {
-            if (dsHocVien != null)
+            if (dsHocVien != null && dsHocVien.Count != 0)
                 this.dsHocVien = dsHocVien;
-            else
+            else if (dsHocVien == null)
                 throw new ArgumentNullException();
+            else
+                throw new ArgumentException();
         }
 
         public List<HocVien> timDSHocVienCoHocBong()
         {
-            return dsHocVien.FindAll(hocVien => hocVien.tinhDiemTrungBinh() >= 8.0 && hocVien.Diem.TOAN >= 5 
+            if (dsHocVien != null && dsHocVien.Count != 0)
+                return dsHocVien.FindAll(hocVien => hocVien.tinhDiemTrungBinh() >= 8.0 && hocVien.Diem.TOAN >= 5 
                                     && hocVien.Diem.VAN >= 5 && hocVien.Diem.ANH >= 5);
+            else if (dsHocVien == null)
+                throw new ArgumentNullException();
+            else
+                throw new ArgumentException();
         }
     }
 }
