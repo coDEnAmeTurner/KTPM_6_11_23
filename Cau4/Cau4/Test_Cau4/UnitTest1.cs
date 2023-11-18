@@ -24,5 +24,13 @@ namespace Test_Cau4
             string actual = test.ConvertDecimalToAnother(n);
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        [DataRow(-3)] // n < 0 : invalid
+        [DataRow(5)] // n >= 0 : valid
+        public void TestConstructor(int n)
+        {
+            Radix testCons = new Radix(n);
+        }
     }
 }

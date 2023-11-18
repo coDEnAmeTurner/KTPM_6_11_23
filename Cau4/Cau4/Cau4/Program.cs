@@ -17,7 +17,7 @@ namespace Cau4
             this.number = number;
         }
 
-        public string ConvertDecimalToAnother(int radix)
+        public string ConvertDecimalToAnother(int radix = 2)
         {
             int n = this.number;
 
