@@ -13,7 +13,7 @@ namespace Cau2
             if (n == 0)
                 return 1.0;
             else if (n > 0)
-                return x * Power(x, n - 1);
+                return x * Power(x, n - 1); 
             else
                 return Power(x, n + 1) / x;
         }

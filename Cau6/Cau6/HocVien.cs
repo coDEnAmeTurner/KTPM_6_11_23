@@ -10,15 +10,15 @@ namespace Cau6
 {
     public struct Diem
     {
-        public double TOAN;
-        public double VAN;
-        public double ANH;
+        public double toan;
+        public double van;
+        public double anh;
 
-        public Diem(double tOAN, double vAN, double aNH)
+        public Diem(double t, double v, double a)
         {
-            TOAN = tOAN;
-            VAN = vAN;
-            ANH = aNH;
+            toan = t;
+            van = v;
+            anh = a;
         }
 
         // override object.Equals
@@ -48,14 +48,15 @@ namespace Cau6
 
         private int maSo;
         private string hoTen;
-        private string queQua;
-        private Diem diem;
+        private string queQua; // thong tin ca nhan
+
+        private Diem diem; // diem 3 mon
 
         public HocVien(string hoTen, string queQua, Diem diem)
         {
             this.MaSo = dem++;
-            if (diem.TOAN >= 0 && diem.TOAN <= 10 && diem.VAN >= 0
-                && diem.VAN <= 10 && diem.ANH >= 0 && diem.ANH <= 10 && hoTen != ""
+            if (diem.toan >= 0 && diem.toan <= 10 && diem.van >= 0
+                && diem.van <= 10 && diem.anh >= 0 && diem.anh <= 10 && hoTen != ""
                 && hoTen != null && queQua != null && queQua != "")
             {
                 this.HoTen = hoTen;
@@ -72,7 +73,7 @@ namespace Cau6
         public Diem Diem { get => diem; set => diem = value; }
 
         public double tinhDiemTrungBinh() {
-            return (diem.ANH + diem.VAN + diem.TOAN) / 3;
+            return (diem.anh + diem.van + diem.toan) / 3;
         }
 
         // override object.Equals
